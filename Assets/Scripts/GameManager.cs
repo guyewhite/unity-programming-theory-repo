@@ -21,6 +21,15 @@ public class GameManager : MonoBehaviour
         {
             UpdateScoreText();
         }
+        
+        if (audioSource == null)
+        {
+            audioSource = GetComponent<AudioSource>();
+            if (audioSource == null)
+            {
+                audioSource = gameObject.AddComponent<AudioSource>();
+            }
+        }
     }
 
     void Update()
