@@ -39,10 +39,22 @@ public class GoldenBall : BallController
         }
     }
 
-    protected override void Update()
+    // Polymorphic Movement: Golden balls fall slower and zigzag
+    protected override void Move()
     {
-        base.Update();
+        // Zigzag movement pattern
+        float horizontalMovement = Mathf.Sin(Time.time * 2f) * 2f;
+        Vector3 movement = new Vector3(horizontalMovement, -fallSpeed, 0f) * Time.deltaTime;
+        transform.Translate(movement, Space.World);
         
+        // Rotation for visual effect
         transform.Rotate(Vector3.up * 100f * Time.deltaTime);
+    }
+    
+    // Override Initialize to show polymorphism
+    public override void Initialize(float speed)
+    {
+        base.Initialize(speed * 0.6f); // Golden balls are always slower
+        Debug.Log("Golden Ball initialized with reduced speed for easier catching!");
     }
 }

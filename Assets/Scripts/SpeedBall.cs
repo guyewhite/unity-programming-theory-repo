@@ -56,13 +56,32 @@ public class SpeedBall : BallController
         renderer.material = new Material(Shader.Find("Sprites/Default"));
     }
 
-    protected override void Update()
+    // Polymorphic Movement: Speed balls accelerate and spiral
+    protected override void Move()
     {
+        // Accelerate over time
         fallSpeed += speedIncreaseRate * Time.deltaTime;
         
-        base.Update();
+        // Spiral movement pattern
+        float spiralRadius = 0.5f;
+        float spiralSpeed = Time.time * 5f;
+        float xOffset = Mathf.Cos(spiralSpeed) * spiralRadius;
+        float zOffset = Mathf.Sin(spiralSpeed) * spiralRadius;
         
+        Vector3 movement = new Vector3(xOffset, -fallSpeed, zOffset) * Time.deltaTime;
+        transform.Translate(movement, Space.World);
+        
+        // Fast rotation for visual effect
         transform.Rotate(Vector3.forward * 200f * Time.deltaTime);
+    }
+    
+    // Override ApplyForce to demonstrate different behavior
+    public override void ApplyForce(float force)
+    {
+        // Speed balls respond more dramatically to forces
+        base.ApplyForce(force * 1.5f);
+        speedIncreaseRate += force * 0.5f;
+        Debug.Log($"Speed Ball: Force amplified! New acceleration rate: {speedIncreaseRate}");
     }
 
     protected override void OnCaught()

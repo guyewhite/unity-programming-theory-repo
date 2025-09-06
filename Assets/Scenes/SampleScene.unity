@@ -707,6 +707,7 @@ GameObject:
   - component: {fileID: 1244102016}
   - component: {fileID: 1244102015}
   - component: {fileID: 1244102017}
+  - component: {fileID: 1244102018}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -729,6 +730,8 @@ MonoBehaviour:
   ballPrefab: {fileID: 6580131689759786582, guid: 777c2efb7ff4445069b679f8fbe4da31, type: 3}
   goldenBallPrefab: {fileID: 6580131689759786582, guid: 382ebc09a23c14327ab6f946595b30ba, type: 3}
   speedBallPrefab: {fileID: 6580131689759786582, guid: 745cec75c8a794b258fdc322ce9384aa, type: 3}
+  bonusBallPrefab: {fileID: 6580131689759786582, guid: a94e9cc642f4242ada9f3b976d6095db, type: 3}
+  powerUpPrefab: {fileID: 2827107327523276176, guid: 9cbfcc49b489c465b92f7bb574dd9b79, type: 3}
   spawnArea: {fileID: 0}
   audioSource: {fileID: 0}
   catchSound: {fileID: 8300000, guid: 1d645da3e81a84bba8de2d11ce9c441d, type: 3}
@@ -792,6 +795,23 @@ MonoBehaviour:
     m_NumAlphaKeys: 2
   colorChangeSpeed: 0.025
   animateColors: 1
+--- !u!114 &1244102018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1244102014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 523698864d8f14941aeb6e0269da71e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PolymorphismDemo
+  normalBallPrefab: {fileID: 6580131689759786582, guid: 777c2efb7ff4445069b679f8fbe4da31, type: 3}
+  goldenBallPrefab: {fileID: 6580131689759786582, guid: 382ebc09a23c14327ab6f946595b30ba, type: 3}
+  speedBallPrefab: {fileID: 6580131689759786582, guid: 745cec75c8a794b258fdc322ce9384aa, type: 3}
+  bonusBallPrefab: {fileID: 6580131689759786582, guid: a94e9cc642f4242ada9f3b976d6095db, type: 3}
+  powerUpPrefab: {fileID: 2827107327523276176, guid: 9cbfcc49b489c465b92f7bb574dd9b79, type: 3}
 --- !u!1 &1248446566
 GameObject:
   m_ObjectHideFlags: 0
