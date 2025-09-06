@@ -729,7 +729,7 @@ MonoBehaviour:
   spawnArea: {fileID: 0}
   audioSource: {fileID: 0}
   catchSound: {fileID: 8300000, guid: 1d645da3e81a84bba8de2d11ce9c441d, type: 3}
-  scoreText: {fileID: 0}
+  scoreText: {fileID: 580238492}
 --- !u!4 &1244102016
 Transform:
   m_ObjectHideFlags: 0

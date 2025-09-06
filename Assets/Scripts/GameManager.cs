@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -7,7 +8,7 @@ public class GameManager : MonoBehaviour
     public Transform spawnArea;
     public AudioSource audioSource;
     public AudioClip catchSound;
-    public Text scoreText;
+    public TextMeshProUGUI scoreText;
     
     private int score = 0;
     private float spawnInterval = 2f;
