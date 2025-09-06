@@ -2,15 +2,27 @@ using UnityEngine;
 
 public class BallController : MonoBehaviour
 {
-    private float fallSpeed = 5f;
-    private GameManager gameManager;
+    protected float fallSpeed = 5f;
+    protected int pointValue = 1;
+    protected Color ballColor = Color.white;
+    protected GameManager gameManager;
 
-    void Start()
+    protected virtual void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
+        SetupBall();
     }
 
-    void Update()
+    protected virtual void SetupBall()
+    {
+        Renderer renderer = GetComponent<Renderer>();
+        if (renderer != null)
+        {
+            renderer.material.color = ballColor;
+        }
+    }
+
+    protected virtual void Update()
     {
         transform.Translate(Vector3.down * fallSpeed * Time.deltaTime);
         
@@ -24,15 +36,21 @@ public class BallController : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter(Collider other)
+    protected virtual void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
             if (gameManager != null)
             {
-                gameManager.BallCaught();
+                gameManager.BallCaught(pointValue);
             }
+            OnCaught();
             Destroy(gameObject);
         }
+    }
+
+    protected virtual void OnCaught()
+    {
+        // Override this in child classes for special effects
     }
 }

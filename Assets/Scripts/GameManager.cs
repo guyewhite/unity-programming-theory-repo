@@ -5,6 +5,8 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
     public GameObject ballPrefab;
+    public GameObject goldenBallPrefab;
+    public GameObject speedBallPrefab;
     public Transform spawnArea;
     public AudioSource audioSource;
     public AudioClip catchSound;
@@ -44,7 +46,9 @@ public class GameManager : MonoBehaviour
 
     void SpawnBall()
     {
-        if (ballPrefab != null)
+        GameObject ballToSpawn = ChooseBallType();
+        
+        if (ballToSpawn != null)
         {
             float randomX = Random.Range(-spawnRangeX, spawnRangeX);
             Vector3 spawnPosition = new Vector3(randomX, spawnHeight, 0f);
@@ -54,13 +58,35 @@ public class GameManager : MonoBehaviour
                 spawnPosition = spawnArea.position + new Vector3(randomX, 0f, 0f);
             }
             
-            Instantiate(ballPrefab, spawnPosition, Quaternion.identity);
+            Instantiate(ballToSpawn, spawnPosition, Quaternion.identity);
         }
     }
 
-    public void BallCaught()
+    GameObject ChooseBallType()
     {
-        score++;
+        float randomValue = Random.Range(0f, 100f);
+        
+        if (randomValue < 10f && goldenBallPrefab != null)
+        {
+            Debug.Log("Spawning Golden Ball!");
+            return goldenBallPrefab;
+        }
+        else if (randomValue < 30f && speedBallPrefab != null)
+        {
+            Debug.Log("Spawning Speed Ball!");
+            return speedBallPrefab;
+        }
+        else if (ballPrefab != null)
+        {
+            return ballPrefab;
+        }
+        
+        return ballPrefab;
+    }
+
+    public void BallCaught(int points = 1)
+    {
+        score += points;
         UpdateScoreText();
         PlayCatchSound();
         
