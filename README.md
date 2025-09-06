@@ -1,5 +1,5 @@
 # unity-programming-theory-repo
-submission 2 for jr programmer pathway
+Submitted as the final exercise for the Unity "Junior Programmer Pathway." Illustrates the following.
 
 ## Object-Oriented Programming Concepts Demonstrated
 
